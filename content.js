@@ -12,7 +12,8 @@ function applyHiddenElements() {
   const defaultHiddenElements = [
     'a[aria-label="Home"]',
     'a[aria-label="Discover"]',
-    'a[aria-label="Spaces"]'
+    'a[aria-label="Spaces"]',
+    'div.h-14.items-stretch'
   ];
   
   chrome.storage.local.get('hiddenElements', function(data) {
