@@ -13,7 +13,10 @@ function applyHiddenElements() {
     'a[aria-label="Home"]',
     'a[aria-label="Discover"]',
     'a[aria-label="Spaces"]',
-    'div.h-14.items-stretch'
+    // download, x, discord sidebar
+    'div.h-14.items-stretch',
+    // footer links section
+    'div.pb-md.hidden.md\\:block' 
   ];
   
   chrome.storage.local.get('hiddenElements', function(data) {
