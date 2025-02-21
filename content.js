@@ -16,7 +16,9 @@ function applyHiddenElements() {
     // download, x, discord sidebar
     'div.h-14.items-stretch',
     // footer links section
-    'div.pb-md.hidden.md\\:block' 
+    'div.pb-md.hidden.md\\:block',
+    // news section
+    'div.absolute.w-full'
   ];
   
   chrome.storage.local.get('hiddenElements', function(data) {
