@@ -1,0 +1,7 @@
+perplexity-customizer/
+├── manifest.json
+├── content.js
+├── popup/
+│   ├── popup.html
+│   ├── popup.css
+│   └── popup.js 

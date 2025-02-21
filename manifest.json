@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Perplexity Customizer",
+  "version": "1.0",
+  "description": "Customize Perplexity AI by hiding elements",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["*://www.perplexity.ai/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://www.perplexity.ai/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  }
+} 
