@@ -10,6 +10,7 @@ function hideElements(selector) {
 function applyHiddenElements() {
   // Default elements to hide
   const defaultHiddenElements = [
+    // sidebar elements
     'a[aria-label="Home"]',
     'a[aria-label="Discover"]',
     'a[aria-label="Spaces"]',
@@ -18,7 +19,10 @@ function applyHiddenElements() {
     // footer links section
     'div.pb-md.hidden.md\\:block',
     // news section
-    'div.absolute.w-full'
+    'div.absolute.w-full',
+    // pro search reasoning bar
+    'div:has(> div > div > div > div.px-sm.py-1\\.5)',
+    
   ];
   
   chrome.storage.local.get('hiddenElements', function(data) {
