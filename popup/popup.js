@@ -42,31 +42,55 @@ function removeSelector(index) {
   });
 }
 
-// Add new selector
-document.addEventListener('DOMContentLoaded', function() {
-  // Update the list when popup opens
-  updateHiddenElementsList();
+// Add this at the beginning of the file
+function updateDefaultElementsList() {
+  const defaultList = document.getElementById('defaultElementsList');
+  defaultList.innerHTML = '';
 
-  // Handle adding new selectors
-  document.getElementById('addSelector').addEventListener('click', function() {
-    const selectorInput = document.getElementById('selector');
-    const selector = selectorInput.value.trim();
+  chrome.storage.local.get('defaultElementsState', function(data) {
+    // Initialize state from the defaultHiddenElements enabled property
+    const defaultElementsState = data.defaultElementsState || 
+      defaultHiddenElements.map(element => element.enabled);
     
-    if (selector) {
-      chrome.storage.local.get('hiddenElements', function(data) {
-        const hiddenElements = data.hiddenElements || [];
-        hiddenElements.push(selector);
-        chrome.storage.local.set({hiddenElements}, () => {
-          selectorInput.value = '';
-          updateHiddenElementsList();
-          // Refresh the active tab to apply the hiding
-          chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-            if (tabs[0]) {
-              chrome.tabs.reload(tabs[0].id);
-            }
-          });
-        });
-      });
-    }
+    defaultHiddenElements.forEach((element, index) => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'default-element-item';
+      
+      const label = document.createElement('span');
+      label.className = 'default-element-label';
+      label.textContent = element.label;
+      
+      const button = document.createElement('button');
+      button.className = `toggle-btn ${defaultElementsState[index] ? 'active' : ''}`;
+      button.title = defaultElementsState[index] ? 'Element is visible' : 'Element is hidden';
+      button.addEventListener('click', () => toggleDefaultElement(index));
+      
+      itemDiv.appendChild(label);
+      itemDiv.appendChild(button);
+      defaultList.appendChild(itemDiv);
+    });
   });
+}
+
+function toggleDefaultElement(index) {
+  chrome.storage.local.get('defaultElementsState', function(data) {
+    const defaultElementsState = data.defaultElementsState || 
+      defaultHiddenElements.map(element => element.enabled);
+    defaultElementsState[index] = !defaultElementsState[index];
+    
+    chrome.storage.local.set({defaultElementsState}, () => {
+      updateDefaultElementsList();
+      // Refresh the active tab to apply changes
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        if (tabs[0]) {
+          chrome.tabs.reload(tabs[0].id);
+        }
+      });
+    });
+  });
+}
+
+// Initialize popup
+document.addEventListener('DOMContentLoaded', function() {
+  updateDefaultElementsList();
 }); 

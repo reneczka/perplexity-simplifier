@@ -6,30 +6,31 @@ function hideElements(selector) {
   });
 }
 
+// Function to show elements based on selector
+function showElements(selector) {
+  const elements = document.querySelectorAll(selector);
+  elements.forEach(element => {
+    element.style.display = ''; // Reset to default display value
+  });
+}
+
 // Function to apply all hidden element rules
 function applyHiddenElements() {
-  // Default elements to hide
-  const defaultHiddenElements = [
-    // sidebar elements
-    'a[aria-label="Home"]',
-    'a[aria-label="Discover"]',
-    'a[aria-label="Spaces"]',
-    // download, x, discord sidebar
-    'div.h-14.items-stretch',
-    // footer links section
-    'div.pb-md.hidden.md\\:block',
-    // news section
-    'div.absolute.w-full',
-    // pro search reasoning bar
-    'div:has(> div > div > div > div.px-sm.py-1\\.5)',
+  chrome.storage.local.get(['hiddenElements', 'defaultElementsState'], function(data) {
+    const customHiddenElements = data.hiddenElements || [];
+    // Initialize state from the defaultHiddenElements enabled property
+    const defaultElementsState = data.defaultElementsState || 
+      defaultHiddenElements.map(element => element.enabled);
     
-  ];
-  
-  chrome.storage.local.get('hiddenElements', function(data) {
-    // Combine default elements with user-added elements
-    const hiddenElements = [...defaultHiddenElements, ...(data.hiddenElements || [])];
+    // Hide elements that are toggled off (inactive/gray state)
+    defaultHiddenElements.forEach((element, index) => {
+      if (!defaultElementsState[index]) {
+        hideElements(element.selector);
+      }
+    });
     
-    hiddenElements.forEach(selector => {
+    // Apply custom hidden elements
+    customHiddenElements.forEach(selector => {
       hideElements(selector);
     });
   });
