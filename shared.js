@@ -17,6 +17,11 @@ const defaultHiddenElements = [
     label: 'Sources Section',
     enabled: true
   },
+  {
+    selector: '.pb-32 > *:nth-child(2)',
+    label: 'Related Section',
+    enabled: true
+  },
   { 
     selector: 'div:has(> div > div > svg.fa-images)', 
     label: 'Image Search Bar', 
