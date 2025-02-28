@@ -43,8 +43,7 @@ perplexity-customizer/
 │ └── popup.js # Popup functionality and event handlers
 └── icons/ # Extension icons in different sizes
 ├── favicon-16x16.png
-├── favicon-32x32.png
-└── apple-touch-icon.png
+└── favicon-32x32.png
 ```
 
 ## Setup and Installation
