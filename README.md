@@ -32,6 +32,7 @@ The Perplexity UI Customizer is designed to enhance the user experience on Perpl
 
 ## Project Structure
 
+```
 perplexity-customizer/
 ├── manifest.json # Extension configuration and permissions
 ├── shared.js # Shared constants and element selectors
@@ -44,6 +45,7 @@ perplexity-customizer/
 ├── favicon-16x16.png
 ├── favicon-32x32.png
 └── apple-touch-icon.png
+```
 
 ## Setup and Installation
 
