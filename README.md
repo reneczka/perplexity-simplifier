@@ -2,6 +2,8 @@
 
 A Chrome extension that allows users to customize their Perplexity AI interface by selectively hiding UI elements. Users can toggle various interface components to create a cleaner, more focused experience while using Perplexity AI.
 
+[Live demo](https://chromewebstore.google.com/detail/perplexity-ui-customizer/kifkplcfbhfeibcidpapmjbmaodacgkh?authuser=0&hl=en)
+
 ## Table of Contents
 
 - [About the Project](#about-the-project)

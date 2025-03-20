@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Perplexity UI Customizer",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Customize Perplexity UI by hiding elements",
   "permissions": ["activeTab", "storage"],
   "host_permissions": ["*://www.perplexity.ai/*"],
