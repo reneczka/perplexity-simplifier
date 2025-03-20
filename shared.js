@@ -11,14 +11,14 @@ const defaultHiddenElements = [
   { selector: 'div.h-14.items-stretch', label: 'Download Bar', enabled: true },
   { selector: 'div.pb-md.hidden.md\\:block', label: 'Footer Links', enabled: true },
   { selector: 'div.absolute.w-full', label: 'News Section', enabled: true },
-  { selector: 'div:has(> div > div > div > div.px-sm.py-1\\.5)', label: 'Pro Search Bar', enabled: true },
+  { selector: 'div[data-test-id]', label: 'Pro Search Bar', enabled: true },
   {
-    selector: 'div.mb-md.border-borderMain\\/50:has(div.scrollbar-none)',
+    selector: 'div.flex.border-borderMain\\/50.bg-transparent:has(.dark\\:border-borderMainDark\\/50)',
     label: 'Sources Section',
     enabled: true
   },
   {
-    selector: '.pb-32 > *:nth-child(2)',
+    selector: 'div:has(> div.divide-y.border-t.border-borderMain\\/50.ring-borderMain\\/50.divide-borderMain\\/50.dark\\:divide-borderMainDark\\/50.dark\\:ring-borderMainDark\\/50.dark\\:border-borderMainDark\\/50.bg-transparent)',
     label: 'Related Section',
     enabled: true
   },
